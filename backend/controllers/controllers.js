@@ -7,7 +7,11 @@ const app = express();
 const main = async (request, response) => {
     try {
         if (request.method === 'GET') {
-            response.send("Hello world!");
+            response.json({
+                "name": 'Shafqat',
+                "id": 'id1',
+                "class": 4,
+            });
         } else {
             response.send("Not a GET method!");
         }
