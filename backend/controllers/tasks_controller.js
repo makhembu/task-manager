@@ -1,4 +1,5 @@
 const Tasks = require('../models/Tasks.js');
+const mongoose = require('mongoose');
 
 // Creating a new task
 const create_task = async (request, response) => {
@@ -116,10 +117,72 @@ const deleteTask = async (request, response) => {
     }
 }
 
+// Editing/updating a task
+const editTask = async (request, response) => {
+    try {
+        const { id } = request.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return response.status(401).json({
+                message: "Task id is invalid!"
+            });
+        }
+
+        if (Object.keys(request.body).length === 0) {
+            return response.status(400).json({
+                message: "At least one field required!"
+            });
+        }
+
+        const allowedFields = ['title', 'description', 'status', 'priority', 'dueDate'];
+        const updates = {};
+
+        allowedFields.forEach(field => {
+            if (request.body[field] !== undefined) {
+                updates[field] = request.body[field];
+            }
+        });
+
+        if (Object.keys(updates).length === 0) {
+            return response.status(400).json({
+                message: "No valid field provided!"
+            });
+        }
+
+        const task = await Tasks.findByIdAndUpdate(
+            {
+                _id: id,
+                user: request.user.id,
+            },
+            {
+                $set: updates,
+            },
+            {
+                new: true,
+                runValidators: true,
+            }
+        )
+
+        if (!task) {
+            return response.status(404).json({
+                message: "Task not found!"
+            });
+        }
+        return response.status(200).json({
+            task,
+            message: "Task updated!"
+        })
+    } catch (error) {
+        console.log("Error!", error);
+        return response.status(500).json({
+            message: "Server error!"
+        })
+    }
+}
 
 module.exports = {
     create_task,
     tasks,
     viewTask,
     deleteTask,
+    editTask,
 }

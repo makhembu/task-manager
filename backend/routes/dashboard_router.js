@@ -1,10 +1,10 @@
 const express = require('express');
-const Router = express.Router();
+const router = express.Router();
 const dashboard_controller = require('../controllers/dashboard_controller.js');
 const authorization = require('../middelewares/authorization.js');
 
+// Dashboard page
+router.get('/dashboard', authorization, dashboard_controller);
 
-Router.route('/dashboard').get(authorization, dashboard_controller);
 
-
-module.exports = Router;
+module.exports = router;

@@ -1,5 +1,5 @@
 
-const user = require('../models/User.js');
+const User = require('../models/User.js');
 
 // Dashboard controller
 const dashboard = async (request, response) => {
@@ -11,7 +11,8 @@ const dashboard = async (request, response) => {
             });
         }
         return response.status(200).json({
-            user
+            user,
+            message: "Welcome to dashboard!"
         })
 
     } catch(error) {

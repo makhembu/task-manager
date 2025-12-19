@@ -27,7 +27,6 @@ const register = async (request, response) => {
 }
 
 // User login
-
 const login = async (request, response) => {
     const {email, password} = request.body;
     try {
@@ -55,7 +54,6 @@ const login = async (request, response) => {
         });
     }
 }
-
 
 module.exports = {
     register,

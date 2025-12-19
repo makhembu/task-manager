@@ -4,7 +4,7 @@ const app = express();
 const Router = express.Router();
 
 
-Router.route('/').get(main);
+// Router.route('/').get(main);
 
 
 

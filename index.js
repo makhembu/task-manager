@@ -15,13 +15,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
-app.use('/', routes);
+// app.use('/api', dashboard_router);
 
 // Register and login routes 
 app.use('/api/auth', auth);
 
 // Dashboard route
-app.use('/api/dashboard', dashboard_router);
+app.use('/api', dashboard_router);
 
 // Tasks route
 app.use('/api/tasks', tasks_router);
