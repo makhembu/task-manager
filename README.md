@@ -67,7 +67,7 @@ cd task-manager
 cd backend
 npm install
 cp .env.example .env    # create your own .env file
-npm start               # starts the backend at http://localhost:5000
+npm start               # starts the backend at http://localhost:4000
 ```
 
 ### Frontend Setup
@@ -75,7 +75,7 @@ npm start               # starts the backend at http://localhost:5000
 ```bash
 cd frontend
 npm install
-npm start               # starts React frontend at http://localhost:3000
+npm start               # starts React frontend at http://localhost:5173
 ```
 
 ---
@@ -85,7 +85,7 @@ npm start               # starts React frontend at http://localhost:3000
 Create a `.env` file in the `backend` folder:
 
 ```env
-PORT=5000
+PORT=4000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
