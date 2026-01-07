@@ -21,7 +21,7 @@ To contribute, you need to have Node.js and npm installed, and a local copy of t
 
 ```bash
 # Clone your fork of the repository
-git clone https://github.com/<your-username>/task-manager.git
+git clone https://github.com/shafqat-baloch786/task-manager.git
 cd task-manager
 
 # Install dependencies for backend and frontend
